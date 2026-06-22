@@ -26,18 +26,36 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - [ ] Describe the game's purpose.
+  The game’s purpose is to help the player guess a hidden number using feedback hints while tracking attempts and score.
+
 - [ ] Detail which bugs you found.
+    -Secret number reset on every submit due to Streamlit state not being preserved
+    -Hint logic was incorrect / misleading
+    -Empty guess input was treated as zero instead of showing an error
+    -Decimal input was not parsed correctly
+    -Non-numeric input was not handled gracefully
+    -Wrong-guess penalty could drive the score below zero
+
+
 - [ ] Explain what fixes you applied.
+    - Fixed Streamlit state so the secret number no longer resets
+    - Corrected hint logic to show the right direction
+    - Added proper parsing for decimal and non-numeric input
+    - Prevented empty guesses from being treated as zero
+    - Ensured wrong-guess penalties do not make the score negative
+
 
 ## 📸 Demo Walkthrough
 
-Describe your fixed game in numbered steps so a reader can follow along without watching a video:
+The difficulty level was Hard (range 1-50, 5 attempts allowed).
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User enters guess `1` and the game returns "Too Low."
+2. User enters guess `20` and the game returns "Too Low."
+3. User enters guess `50` and the game returns "Too High."
+4. User enters guess `40` and the game returns "Too Low."
+5. User enters guess `45` and the game returns "Win."
+6. Score updates correctly after each guess, and the final score is 40%.
+7. The game ends after the correct guess.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
